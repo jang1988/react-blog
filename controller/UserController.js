@@ -1,8 +1,7 @@
 import bcrypt from 'bcrypt';
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
-import UserModel from '../modules/users.js';
-
+import UserModel from '../models/Users.js';
 
 export const register = async (req, res) => {
   try {
@@ -46,7 +45,7 @@ export const register = async (req, res) => {
       message: 'Не удалось зарегистрироваться',
     });
   }
-}
+};
 
 export const login = async (req, res) => {
   try {
@@ -92,7 +91,7 @@ export const login = async (req, res) => {
       message: 'Не удалось зарегистрироваться',
     });
   }
-}
+};
 
 export const getMe = async (req, res) => {
   try {
@@ -113,4 +112,4 @@ export const getMe = async (req, res) => {
       message: 'Нет доступа',
     });
   }
-}
+};

@@ -1,8 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { registerValidation, loginValidation } from './validations/validation.js';
+import { registerValidation, loginValidation, postCreateValidation } from './validations/validation.js';
 import checkAuth from './utils/checkAuth.js';
 import { getMe, login, register } from './controller/UserController.js';
+import { create } from './controller/PostController.js';
 
 mongoose.set('strictQuery', false);
 mongoose
@@ -25,6 +26,9 @@ app.post('/auth/login',loginValidation, login);
 app.post('/auth/register', registerValidation, register);
 
 app.get('/auth/me', checkAuth, getMe)
+
+app.post('/posts',checkAuth, postCreateValidation, create)
+
 
 app.listen(4444, (err) => {
   if (err) {
